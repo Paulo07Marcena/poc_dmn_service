@@ -21,18 +21,40 @@ public class EventService {
     public void processEvent(Event event) {
 
         System.out.println("Starting to processing event");
-        startDMN();
-        System.out.println("DMN started");
 
-        DmnEvent dmnEvent = new DmnEvent(event.getAccountType(), event.getAmount());
+        DmnEvent dmnEvent = new DmnEvent(event.getAccountType().toUpperCase(), event.getAmount());
 
         DmnDecisionTableResult result = dmnEngine.evaluateDecisionTable(decision, dmnEvent.toMap());
 
-        Long decisionResult = result.getSingleResult().getSingleEntry();
-        System.out.println("Decision Result: " + decisionResult);
+        try {
+            Object decisionResultObj = result.getSingleResult().getSingleEntry();
+            Double decisionResult = null;
+
+            if (decisionResultObj instanceof Number) {
+                decisionResult = ((Number) decisionResultObj).doubleValue();
+            } else {
+                throw new IllegalArgumentException("Unexpected result type: " + decisionResultObj.getClass().getSimpleName());
+            }
+
+            printEventDetails(event, decisionResult);
+
+        } catch (Exception e) {
+            System.out.println("Error processing event: " + e.getMessage());
+        }
     }
 
-    public void startDMN() {
+    private void printEventDetails(Event event, Double cashback) {
+        System.out.println("+----------------+----------------------+");
+        System.out.println("|     Campo      |        Valor         |");
+        System.out.println("+----------------+----------------------+");
+        System.out.printf("| %-14s | %-20s |\n", "Status", "Event processed");
+        System.out.printf("| %-14s | %-20s |\n", "Account Type", event.getAccountType());
+        System.out.printf("| %-14s | R$ %-17.2f |\n", "Amount", event.getAmount());
+        System.out.printf("| %-14s | R$ %-17.2f |\n", "Cashback", cashback);
+        System.out.println("+----------------+----------------------+");
+    }
+
+    public EventService() {
         this.dmnEngine = DmnEngineConfiguration.createDefaultDmnEngineConfiguration().buildEngine();
         try (InputStream inputStream = getClass().getResourceAsStream("/decision.dmn")) {
             if (inputStream == null) {
