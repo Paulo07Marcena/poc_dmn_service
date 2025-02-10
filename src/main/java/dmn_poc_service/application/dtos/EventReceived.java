@@ -7,16 +7,12 @@ import lombok.Setter;
 
 @Getter @Setter @NoArgsConstructor
 public class EventReceived {
-    private String id;
-    private String type;
-    private String purchaseId;
+    private String accountType;
     private Double amount;
 
     public Event toDomain(){
         return new Event(
-            this.getId(),
-            this.getType(),
-            this.getPurchaseId(),
+            this.getAccountType(),
             this.getAmount()
         );
     }

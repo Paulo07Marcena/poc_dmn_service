@@ -8,15 +8,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Event {
-    private String id;
-    private String type;
-    private String purchaseId;
+    private String accountType;
     private Double amount;
 
-    public Event(String id, String type, String purchaseId, Double amount){
-        this.id = id;
-        this.type = type;
-        this.purchaseId = purchaseId;
+    public Event(String accountType, Double amount){
+        this.accountType = accountType;
         this.amount = amount;
     }
 }

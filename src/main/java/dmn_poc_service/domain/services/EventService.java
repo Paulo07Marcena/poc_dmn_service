@@ -20,11 +20,11 @@ public class EventService {
 
     public void processEvent(Event event) {
 
-        System.out.println("Processing event: " + event.getId()); //TODO Add LOGS here
+        System.out.println("Starting to processing event");
         startDMN();
-        System.out.println("DMN started"); //TODO Add LOGS here
+        System.out.println("DMN started");
 
-        DmnEvent dmnEvent = new DmnEvent(event.getType(), event.getAmount());
+        DmnEvent dmnEvent = new DmnEvent(event.getAccountType(), event.getAmount());
 
         DmnDecisionTableResult result = dmnEngine.evaluateDecisionTable(decision, dmnEvent.toMap());
 
