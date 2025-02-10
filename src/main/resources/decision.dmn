@@ -2,16 +2,16 @@
 <dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kie.apache.org/dmn/_FC426485-DEE4-4D62-BF35-A466E1529776" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_61922C5E-3E2C-4F2F-816E-515936C46704" name="decision" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kie.apache.org/dmn/_FC426485-DEE4-4D62-BF35-A466E1529776">
   <dmn:extensionElements/>
   <dmn:itemDefinition id="_753D393D-781A-4902-B67D-7A770F94CBBD" name="Event" isCollection="false">
-    <dmn:itemComponent id="_7FFBF2E8-12D1-4815-B13D-5D4AD687F02F" name="type" isCollection="false">
+    <dmn:itemComponent id="_7FFBF2E8-12D1-4815-B13D-5D4AD687F02F" name="accountType" isCollection="false">
       <dmn:typeRef>string</dmn:typeRef>
     </dmn:itemComponent>
     <dmn:itemComponent id="_F87DE113-81F2-4544-B275-C73E9AD73880" name="amount" isCollection="false">
       <dmn:typeRef>number</dmn:typeRef>
     </dmn:itemComponent>
   </dmn:itemDefinition>
-  <dmn:inputData id="_77685BC1-A765-4F97-B880-EBE90C974CE4" name="dmnEvent">
+  <dmn:inputData id="_77685BC1-A765-4F97-B880-EBE90C974CE4" name="Event">
     <dmn:extensionElements/>
-    <dmn:variable id="_031136AE-4DC3-4F12-B15F-269CFB02D53E" name="dmnEvent" typeRef="Event"/>
+    <dmn:variable id="_031136AE-4DC3-4F12-B15F-269CFB02D53E" name="Event" typeRef="Event"/>
   </dmn:inputData>
   <dmn:decision id="_F3AC618E-50AC-4AAB-A82C-09E4E1054647" name="Cashback">
     <dmn:extensionElements/>
@@ -43,7 +43,7 @@
           <dmn:text>1.5</dmn:text>
         </dmn:outputEntry>
         <dmn:annotationEntry>
-          <dmn:text>"Perfil Bronze com compras menores que R$25,00 pontuam R$1,25 de cashback"</dmn:text>
+          <dmn:text>"Perfil Bronze com compras menores que R$25,00 pontuam R$1,5 de cashback"</dmn:text>
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_F5BE37D4-7050-48B1-9173-DDC987C482BC">
@@ -57,7 +57,7 @@
           <dmn:text>5</dmn:text>
         </dmn:outputEntry>
         <dmn:annotationEntry>
-          <dmn:text>"Perfil Silver com compras maiores que R$100,00 pontuam R$5,00 de cashback"</dmn:text>
+          <dmn:text>"Perfil Silver com compras maiores ou iguais a R$100,00 pontuam R$5,00 de cashback"</dmn:text>
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_76933F96-C104-4D9F-B1AA-677A330DD5E2">
@@ -85,7 +85,7 @@
           <dmn:text>7</dmn:text>
         </dmn:outputEntry>
         <dmn:annotationEntry>
-          <dmn:text>"Perfil Gold com compras maiores que R$100,00 pontuam R$10,00 de cashback"</dmn:text>
+          <dmn:text>"Perfil Gold com compras maiores ou iguais a R$100,00 pontuam R$7,00 de cashback"</dmn:text>
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_EA2C19F9-FDDA-4610-9E99-7E4D7A90E1A3">
@@ -100,7 +100,7 @@
           <dmn:text>5</dmn:text>
         </dmn:outputEntry>
         <dmn:annotationEntry>
-          <dmn:text>"Perfil Gold com compras menores que R$50,00 pontuam R$5,00 de cashback"</dmn:text>
+          <dmn:text>"Perfil Gold com compras menores que R$100,00 pontuam R$5,00 de cashback"</dmn:text>
         </dmn:annotationEntry>
       </dmn:rule>
     </dmn:decisionTable>
@@ -114,7 +114,7 @@
             <kie:width>187</kie:width>
             <kie:width>195</kie:width>
             <kie:width>217</kie:width>
-            <kie:width>389</kie:width>
+            <kie:width>770</kie:width>
           </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
