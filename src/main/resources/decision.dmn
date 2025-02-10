@@ -21,20 +21,34 @@
     </dmn:informationRequirement>
     <dmn:decisionTable id="_21D84E07-5D73-44C8-B9CE-6E429D6D465F" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
       <dmn:input id="_FC27429B-E15A-4042-9B67-38190FB91A2E">
-        <dmn:inputExpression id="_8B666DC7-0C0C-4178-8027-372332A06FBA" typeRef="number">
+        <dmn:inputExpression typeRef="number">
           <dmn:text>amount</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
       <dmn:input id="_B1EFD3E3-02FD-4BB7-B01A-93CA92640ED5">
-        <dmn:inputExpression id="_52E9ECF2-1ED1-4BEA-B16E-D875B6DCB076" typeRef="string">
+        <dmn:inputExpression typeRef="string">
           <dmn:text>type</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
       <dmn:output id="_58E5EBE2-0593-4865-89A6-6C18E459C631"/>
-      <dmn:annotation name="annotation-1"/>
+      <dmn:annotation name="Regra de eventos"/>
+      <dmn:rule id="_EE3ED16B-56E1-443E-B532-799FC8DA08B4">
+        <dmn:inputEntry id="_DAC2D6C9-E023-4DF9-A52A-09FBF0EDBDFD">
+          <dmn:text>&gt;= 25</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_888FFF48-77FB-4ED5-A9A3-C2D5FF945001">
+          <dmn:text>"BRONZE"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_25D3A003-39F5-4A8C-A906-CEDA4033926B">
+          <dmn:text>1.5</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>"Perfil Bronze com compras menores que R$25,00 pontuam R$1,25 de cashback"</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
       <dmn:rule id="_F5BE37D4-7050-48B1-9173-DDC987C482BC">
         <dmn:inputEntry id="_77E1D231-5CD6-4119-929A-DCED8E886D47">
-          <dmn:text>&gt; 100</dmn:text>
+          <dmn:text>&gt;= 100</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_054818DC-B3DA-4D16-8249-8675E46084EE">
           <dmn:text>"SILVER"</dmn:text>
@@ -43,35 +57,50 @@
           <dmn:text>5</dmn:text>
         </dmn:outputEntry>
         <dmn:annotationEntry>
-          <dmn:text/>
+          <dmn:text>"Perfil Silver com compras maiores que R$100,00 pontuam R$5,00 de cashback"</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_76933F96-C104-4D9F-B1AA-677A330DD5E2">
+        <dmn:inputEntry id="_CF69C054-7329-47DC-974B-54F5156F3544">
+          <dmn:text>&lt; 100</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_98CD3F1F-E7B6-439C-9713-2B8FA2966640">
+          <dmn:text>"SILVER"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_70853677-372B-4ECA-9DE8-B423F22F4B22">
+          <dmn:text>2.5</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>"Perfil Silver com compras menores que R$100,00 pontuam R$2,50 de cashback"</dmn:text>
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_31DF6188-38C5-47BD-8346-7CC5F677FEED">
         <dmn:inputEntry id="_C918168F-0BE2-45AA-861C-39497DEB443C">
-          <dmn:text>100</dmn:text>
+          <dmn:text>&gt;= 100</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_AA5E77B9-9E8B-4D1C-A36E-42BF25F8C057">
           <dmn:text>"GOLD"</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_17417673-1E48-4CAE-B387-8100ECBD7196">
-          <dmn:text>10</dmn:text>
+          <dmn:text>7</dmn:text>
         </dmn:outputEntry>
         <dmn:annotationEntry>
-          <dmn:text/>
+          <dmn:text>"Perfil Gold com compras maiores que R$100,00 pontuam R$10,00 de cashback"</dmn:text>
         </dmn:annotationEntry>
       </dmn:rule>
-      <dmn:rule id="_63184B75-5111-4EB4-A584-02D00B2BEB22">
-        <dmn:inputEntry id="_2E1F5BC8-FC53-4F52-A813-B6A7D9C1B64D">
-          <dmn:text>100</dmn:text>
+      <dmn:rule id="_EA2C19F9-FDDA-4610-9E99-7E4D7A90E1A3">
+        <dmn:inputEntry id="_0931486F-F37E-45E2-9F07-53C13EFF0E5C">
+          <dmn:text>&lt; 100
+</dmn:text>
         </dmn:inputEntry>
-        <dmn:inputEntry id="_49AC1B05-AA11-4D12-A643-BB2BA90E9419">
-          <dmn:text>"BRONZE"</dmn:text>
+        <dmn:inputEntry id="_BAD2DD27-1522-4A2C-8949-B242E79BE93C">
+          <dmn:text>"GOLD"</dmn:text>
         </dmn:inputEntry>
-        <dmn:outputEntry id="_1B87FE8F-CB13-4045-8B82-D5E166B1A81E">
-          <dmn:text>2.5</dmn:text>
+        <dmn:outputEntry id="_A6A07588-42A6-44CD-BF41-5D6E2021E672">
+          <dmn:text>5</dmn:text>
         </dmn:outputEntry>
         <dmn:annotationEntry>
-          <dmn:text/>
+          <dmn:text>"Perfil Gold com compras menores que R$50,00 pontuam R$5,00 de cashback"</dmn:text>
         </dmn:annotationEntry>
       </dmn:rule>
     </dmn:decisionTable>
@@ -85,7 +114,7 @@
             <kie:width>187</kie:width>
             <kie:width>195</kie:width>
             <kie:width>217</kie:width>
-            <kie:width>165</kie:width>
+            <kie:width>389</kie:width>
           </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
